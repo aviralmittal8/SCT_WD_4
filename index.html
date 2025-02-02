@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced To-Do App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-100">
+    <main class="flex flex-col lg:flex-row">
+        <div class="container w-full lg:w-1/2 bg-white p-6 flex flex-col items-center">
+            <div class="header-row mb-4">
+                <div id="clock" class="text-2xl font-bold mr-4"></div>
+                <div id="greeting" class="text-lg font-semibold text-blue-500"></div>
+            </div>
+
+            <div id="calendar"></div>
+
+            <div id="tasks" class="w-full mt-4">
+                <div class="collapsible-btn mb-4">
+                    <h3 class="text-lg font-semibold">Tasks for Selected Date</h3>
+                    <svg id="arrow-icon" class="arrow-icon w-6 h-6 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+
+                <div id="task-list-container" class="task-list-container collapsible">
+                    <div id="task-list-left" class="space-y-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container w-full lg:w-1/2 bg-gray-200 p-6 flex flex-col" id="create-task-section">
+            <div class="reset-btn" id="reset-app">Reset App</div>
+            <h2 class="text-3xl font-semibold mb-4">Task Manager</h2>
+
+            <div class="input-container mb-4">
+                <form id="task-form" class="space-y-4">
+                    <input type="text" id="task-name" class="w-full p-3 rounded-md border border-gray-300" placeholder="Task Name" required>
+                    <textarea id="task-description" class="w-full p-3 rounded-md border border-gray-300" rows="4" placeholder="Task Description" required></textarea>
+
+                    <div class="mb-2">
+                        <label for="from-date" class="text-sm text-gray-600">From Date to Till Date</label>
+                        <div class="flex space-x-2">
+                            <input type="date" id="from-date" class="w-1/2 p-3 rounded-md border border-gray-300" required>
+                            <input type="date" id="to-date" class="w-1/2 p-3 rounded-md border border-gray-300" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 transition-colors">Add Task</button>
+                </form>
+            </div>
+
+            <div class="btn-container mb-4">
+                <button id="show-all" class="action-btn bg-blue-500 text-white hover:bg-blue-600 transition-colors">Show All Tasks</button>
+                <button id="show-completed" class="action-btn view-completed hover:bg-green-600 transition-colors">Show Completed Tasks</button>
+                <button id="show-remaining" class="action-btn view-remaining hover:bg-orange-600 transition-colors">Show Remaining Tasks</button>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-2" id="task-heading">Tasks for Today</h3>
+                <ul id="task-list-right" class="space-y-2"></ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
